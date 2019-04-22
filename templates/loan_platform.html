@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Pipe</title>
+        <link rel="stylesheet" href="../static/loan_platform.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script src="../static/chart.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                 $("#main-form").submit(function() {
+                    var val_holder = "#" + $('.active-btn').attr('id') + "_due";
+                    var val = $(val_holder).html();
+                    var due_str = "#" + $('.active-btn').attr('id') + "_due_date"
+                    var due = $(due_str).html();
+                    var amt = $('#loan_value').val();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/take_out_loan',
+                        dataType: "jsonp",
+                        data: {
+                            user_id: 'borrower',
+                            amnt: amt,
+                            payback_amt: val,
+                            deadline: due
+                        }
+                    });
+                     return false;
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <div style="display:none" id="loan_limit">{% print loan_limit %}</div>
+        <div style="display:none" id="loan_taken">{% print loan_taken %}</div>
+        <div class="container column">
+            <div id="top" class="navbar">
+                <a href="./index.html"><h1>BCML</h1></a>
+                <ul id="nav-list">
+                    <li> <a href="#top">Home</a></li>
+                    <li> <a href="#request">Request</a></li>
+                    <li> <a href="./login.html">Logout</a></li>
+                </ul>
+            </div>
+
+            <div id="top" class="container" style="margin-top: -130px">
+            <div class="container column" style="margin-top: 140px">
+                <div class="container" id="chartContainer" style="display: flex; height: 300px; width: 300px; margin-right:50px"></div>
+                <div class="container column option" style="height: 100px; margin-right: 50px; margin-top: 20px; padding: 20px">
+                    <p>{% print due_date %}</p><br>
+                    <p>Payment Due: ${% print payback_amt %}</p>
+                </div>
+            </div>
+            <div class="container column">
+                <h1 id="request" name="request">Submit for a Loan</h1>
+                <form id="main-form" class="container column">
+                    <label style="margin-top:10px">Select a Deadline</label>
+                    <div class="container column">
+                        <div class="container">
+                            <div id="one_month" class="opt-but container button long-button active-btn">1 Month</div>
+                            <div id="two_month" class="opt-but container button long-button">2 Months</div>
+                            <div id="three_month" class="opt-but container button long-button">3 Months</div>
+                        </div>
+                        <div class="container">
+                            <div id="one_month_modal" class="option">
+                                <h2>1 Month</h2>
+                            </div>
+                            <div id="two_month_modal" class="option opc">
+                                <h2>2 Months</h2>
+                            </div>
+                            <div id="three_month_modal" class="option opc">
+                                <h2>3 Months</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" style="justify-content: center; margin-top:30px">
+                        <div class="container column">
+                        <label for="first_name">Loan Amount</label>
+                        <input id="loan_value" class="input-field" type="number" min="0.01" step="0.01" max="500" placeholder="0.00"/>
+                        </div>
+                        <button id="receive_button" class="container button long-button disabled-button" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+
+
+        </div>
+
+    </body>
+</html>

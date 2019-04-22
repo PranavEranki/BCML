@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+    <header>
+        <title>Pipe - Log In</title>
+        <meta name="referrer" content="no-referrer" />
+        <link rel="stylesheet" href="../static/login_styles.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                 $("#login_form").submit(function() {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/login',
+                        dataType: "jsonp",
+                        data: {
+                            user_id: $('#uid').val()
+                        }
+                    });
+                     return false;
+                });
+            })
+           
+        </script>
+    </header>
+
+    <body>
+        <div class="container">
+            <div class="navbar">
+                <h1>PIPE</h1>
+                <ul id="nav-list">
+                    <li> <a href="/">Home</a></li>
+                    <li> <a href="/#about">About</a></li>
+                    <li> <a href="/login">Log In</a></li>
+                </ul>
+            </div>
+
+            <form id="login_form" class="container margin">
+                <label for="uid">Enter Your username</label>
+                <input id="uid" type="text" class="input-field invalid-button" value=""> 
+                <label for="pwd">Enter Your Password</label>
+                <input type="password" id="delay" class="input-field valid-button"> 
+                <button id="receive_button" class="container button long-button disabled-button" type="submit">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>

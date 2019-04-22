@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Tajawal:200,300,400,500,700,800,900');
+
+body, html {
+	height: 100%;
+    width: 100%;
+    margin: 0;
+    background: linear-gradient(to left, #43cea2, #185a9d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    overflow: hidden;
+}
+
+label {
+    font-family: 'Tajawal', sans-serif;
+    color: white;
+}
+
+.margin {
+    margin: 0;
+    margin-top: 150px;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flex-center {
+    justify-content: center;
+}
+
+.input-field {
+    font-size: 16px;
+    width: 200px;
+    height: 20px;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 0;
+    border: 2px solid grey;
+}
+
+.button {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #2b5876;
+    width: 100px;
+    height: 20px;
+    padding: 10px;
+    margin: 10px;
+    transition-duration: 0.3s;
+}
+
+.active-btn {
+    background-color: #392e60;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #4e4376;
+    border-color: #2b5876;
+}
+
+.long-button {
+    width: 225px;
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid #3cbdc4;
+    background-color: #3cbdc4;
+}
+
+.input-field:focus {
+    outline: none;
+}
+
+.navbar {
+    order: 1;
+    height: 10%;
+    width: 100%;
+    margin: 0px;
+    padding-top: 5px;
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to left, #43cea2, #185a9d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+h1 {
+    margin: 0;
+    font-family: 'Tajawal', sans-serif; 
+    font-weight: 300;
+    letter-spacing: 4px; 
+    font-size: 36pt;
+    color: white;
+}
+
+#nav-list li {
+    font-family: 'Tajawal', sans-serif; 
+    font-weight: 200;
+    font-size: 24pt;
+    color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#nav-list {
+    padding: 0;
+    margin: 0;
+    width: 400px;
+    float: left;
+    list-style: none;
+    right: 0;
+    display: flex; 
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+a:hover {
+    color: gray;
+}
+

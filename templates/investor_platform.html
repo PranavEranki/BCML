@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Pipe</title>
+        <link rel="stylesheet" href="../static/investor_platform.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://js.stripe.com/v3/"></script>
+        <script src="../static/invest.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                 $("#main-form").submit(function() {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/make_investment',
+                        dataType: "jsonp",
+                        data: {
+                            user_id: 'lender',
+                            amnt: $('#value').val()
+                        }
+                    });
+                     return false;
+                });
+            })
+        </script>
+
+    </head>
+
+    <body>
+        <div class="container column flex-align">
+            <div id="top" class="navbar">
+                <a href="./index.html"><h1>BCML</h1></a>
+                <ul id="nav-list">
+                    <li> <a href="#top">Home</a></li>
+                    <li> <a href="#request">Deposit</a></li>
+                    <li> <a href="./login.html">Logout</a></li>
+                </ul>
+            </div>
+
+            <div class="container flex-align">
+            <div class="container column flex-align">
+                <h1 id="wallet-header">Your Wallet</h1>
+                <div id="top" class="container column box">
+                    <div class="container flex-align">
+                    <h2>USD:</h2><div id="usd">${% print coin_amt %}</div>
+                    </div>
+                    <div class="container flex-align">
+                        <h2>BCML:</h2><div id="bcml">{% print coin_amt %}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container column flex-align">
+                <h1 id="deposit">Deposit Money</h1>
+                <form id="main-form" class="container column flex-align">
+                    <label for="first_name">Amount</label>
+                    <input id="value" class="input-field" type="number" min="0.01" step="0.01" max="500" placeholder="0.00"/>
+                    <div id="card-element"></div>
+                    <button id="receive_button" class="container flex-center button long-button disabled-button" type="submit">Submit</button>
+                </form>
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+</html>
